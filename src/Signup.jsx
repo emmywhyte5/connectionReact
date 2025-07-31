@@ -23,11 +23,11 @@ function Signup() {
                     },
                     body: JSON.stringify(formData),
                 });
-                if (!res.ok) {
-                    throw new Error('Network response was not ok');
-                }
+                // if (!res.ok) {
+                //     throw new Error('Network response was not ok');
+                // }
                 const data = await res.json();
-                console.log('Success:', data);
+                console.log(data);
             } catch (error) {
                 console.error('Error:', error);
             }

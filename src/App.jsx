@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { MdDelete } from "react-icons/md";
 
 function App() {
  let [bookBLOCK, setBookBLOCK] = useState([]);
@@ -7,7 +8,9 @@ function App() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch('https://node-assign.onrender.com/book');
+        const response = await fetch('http://localhost:3021/book/', {
+          credentials: 'include',
+        });
         const data = await response.json();
         setBookBLOCK(data);
       } catch (error) {
@@ -21,6 +24,25 @@ function App() {
 
   }, []);
 
+  const deleteBook = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3021/book/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+    }catch (error) {
+      console.error('Error deleting book:', error);
+    }
+  };
+  
+
   return (
     <div>
       <table className=' border-collapse border border-gray-200 w-full'>
@@ -30,6 +52,7 @@ function App() {
               <th className=' p-2 text-left'>isbn</th>
               <th className=' p-2 text-left'>published_date</th>
               <th className=' p-2 text-left'>status</th>
+              <th className=' p-2 text-left'>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -44,11 +67,15 @@ function App() {
                   <td className=' p-2'>{book.isbn}</td>
                   <td className=' p-2'>{book.published_date}</td>
                   <td className=' p-2'>{book.status}</td>
+                  <td className=' p-2'><button onClick={() => deleteBook(book.id)} className=' bg-red-500 text-white p-2 rounded hover:bg-red-800 hover:cursor-pointer'><MdDelete /></button> </td>
                 </tr>
               ))
             )}
           </tbody>
       </table>
+      {bookBLOCK.length === 0 && !loading && (
+        <div className=' text-center mt-4'>No books available</div>
+      )}
     </div>
   )
 }
