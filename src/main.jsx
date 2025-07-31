@@ -7,7 +7,10 @@ import Book from './book.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Signup />
-    <Book />
+   <><BrowserRouter>
+   <Route path="/" element={<App />} />
+   <Route path="/signup" element={<Signup />} />
+   <Route path="/book" element={<Book />} />
+   </BrowserRouter></>
   </StrictMode>,
 )
