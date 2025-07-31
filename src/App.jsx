@@ -67,7 +67,7 @@ function App() {
                   <td className=' p-2'>{book.isbn}</td>
                   <td className=' p-2'>{book.published_date}</td>
                   <td className=' p-2'>{book.status}</td>
-                  <td className=' p-2'><button onClick={() => deleteBook(book.id)} className=' bg-red-500 text-white p-2 rounded hover:bg-red-800 hover:cursor-pointer'><MdDelete /></button> </td>
+                  <td className=' p-2'><button onClick={() => deleteBook(book._id)} className=' bg-red-500 text-white p-2 rounded hover:bg-red-800 hover:cursor-pointer'><MdDelete /></button> </td>
                 </tr>
               ))
             )}
