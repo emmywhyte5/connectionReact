@@ -1,6 +1,6 @@
 import react, { useState } from "react";
 
-function Book() {
+function Novel() {
   let [formData, setFormData] = useState({
     title: "",
     published_date: "",
@@ -38,7 +38,7 @@ function Book() {
 
   return (
     <div className="h-screen flex items-center justify-center bg-black text-white flex-col">
-      <h1 className="text-4xl font-bold">Book</h1>
+      <h1 className="text-4xl font-bold">Novel</h1>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col w-80 mt-4 space-y-4"
@@ -82,11 +82,11 @@ function Book() {
           />
         </label>
         <button type="submit" className="mt-4 p-2 bg-blue-500 rounded">
-          Book
+            Add Novel
         </button>
       </form>
     </div>
   );
 }
 
-export default Book;
+export default Novel;
