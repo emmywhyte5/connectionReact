@@ -24,9 +24,9 @@ function App() {
 
   }, []);
 
-  const deleteBook = async (id) => {
+  const deleteBook = async (bookId) => {
     try {
-      const response = await fetch(`http://localhost:3021/book/${id}`, {
+      const response = await fetch(`http://localhost:3021/book/${bookId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
